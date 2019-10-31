@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SRV_WcfService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SRV_WcfService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Student">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GivenName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Qualification" nillable="true" type="tns:Qualification" />
+      <xs:element minOccurs="0" name="StudentID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Student" nillable="true" type="tns:Student" />
+  <xs:complexType name="Qualification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Competencies" nillable="true" type="tns:ArrayOfCompetency" />
+      <xs:element minOccurs="0" name="CoreUnits" type="xs:int" />
+      <xs:element minOccurs="0" name="DoneC" type="xs:int" />
+      <xs:element minOccurs="0" name="DoneE" type="xs:int" />
+      <xs:element minOccurs="0" name="DoneLE" type="xs:int" />
+      <xs:element minOccurs="0" name="DoneTotal" type="xs:int" />
+      <xs:element minOccurs="0" name="ElectedUnits" type="xs:int" />
+      <xs:element minOccurs="0" name="NationalQualCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QualCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QualName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReqListedElectedUnits" type="xs:int" />
+      <xs:element minOccurs="0" name="TafeQualCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalUnits" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Qualification" nillable="true" type="tns:Qualification" />
+  <xs:complexType name="ArrayOfCompetency">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Competency" nillable="true" type="tns:Competency" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCompetency" nillable="true" type="tns:ArrayOfCompetency" />
+  <xs:complexType name="Competency">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Competencies" nillable="true" type="tns:ArrayOfCompetency" />
+      <xs:element minOccurs="0" name="CompetencyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NationalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Results" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StudyPlan" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubjectCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubjectName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TafeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TrainingPakckageUsage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="competencies" nillable="true" type="tns:ArrayOfCompetency" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Competency" nillable="true" type="tns:Competency" />
+  <xs:complexType name="ArrayOfQualification">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Qualification" nillable="true" type="tns:Qualification" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQualification" nillable="true" type="tns:ArrayOfQualification" />
+</xs:schema>
