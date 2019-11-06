@@ -61,6 +61,10 @@ namespace SRV_UWP_2015V.Models
                     qualification.CoreUnits = qs.Result[i].CoreUnits;
                     qualification.ElectedUnits = qs.Result[i].ElectedUnits;
                     qualification.ReqListedElectedUnits = qs.Result[i].ReqListedElectedUnits;
+                    qualification.DoneC = qs.Result[i].DoneC;
+                    qualification.DoneE = qs.Result[i].DoneE;
+                    qualification.DoneLE = qs.Result[i].DoneLE;
+                    qualification.DoneTotal = qs.Result[i].DoneTotal;
                     qualificationList.Add(qualification);
                 }
                 return qualificationList;

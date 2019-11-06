@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Chelsea\\SRV_UWP_2015V\\SRV_UWP_2015V\\SRV_UWP_2015V.csproj": {}
+  },
+  "projects": {
+    "C:\\Chelsea\\SRV_UWP_2015V\\SRV_UWP_2015V\\SRV_UWP_2015V.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Chelsea\\SRV_UWP_2015V\\SRV_UWP_2015V\\SRV_UWP_2015V.csproj",
+        "projectName": "SRV_UWP_2015V",
+        "projectPath": "C:\\Chelsea\\SRV_UWP_2015V\\SRV_UWP_2015V\\SRV_UWP_2015V.csproj",
+        "projectJsonPath": "C:\\Chelsea\\SRV_UWP_2015V\\SRV_UWP_2015V\\project.json",
+        "packagesPath": "C:\\Users\\001077495\\.nuget\\packages\\",
+        "outputPath": "C:\\Chelsea\\SRV_UWP_2015V\\SRV_UWP_2015V\\obj\\",
+        "projectStyle": "ProjectJson",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\001077495\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        }
+      },
+      "dependencies": {
+        "Microsoft.NETCore.UniversalWindowsPlatform": "[5.1.0, )"
+      },
+      "frameworks": {
+        "uap10.0.10586": {}
+      },
+      "runtimes": {
+        "win10-arm": {
+          "#import": []
+        },
+        "win10-arm-aot": {
+          "#import": []
+        },
+        "win10-x64": {
+          "#import": []
+        },
+        "win10-x64-aot": {
+          "#import": []
+        },
+        "win10-x86": {
+          "#import": []
+        },
+        "win10-x86-aot": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

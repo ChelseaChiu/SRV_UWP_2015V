@@ -87,4 +87,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetStudents">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStudentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SRV_WcfService" minOccurs="0" name="GetStudentsResult" nillable="true" type="q5:ArrayOfStudent" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNotPassedCompetencies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="studentID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="qualicationID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNotPassedCompetenciesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SRV_WcfService" minOccurs="0" name="GetNotPassedCompetenciesResult" nillable="true" type="q6:ArrayOfCompetency" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

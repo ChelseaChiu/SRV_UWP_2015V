@@ -11,14 +11,14 @@ namespace SRV_UWP_2015V.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Email { get; }
+        public string Email { get; set; }
         public string Phone { get; }
         public string Address { get; }
         public string DOB { get; }
         public string UserID { get; set; }
         public string Password { get; set; }
 
-        public bool Login(string inUserId)
+        public static bool Login(string inUserId)
         {
             var success = Proxy.Login(inUserId);
             
@@ -35,7 +35,7 @@ namespace SRV_UWP_2015V.Models
             return mySelectedItem;
         }
 
-        public Student GetStudentById(string studentId)
+        public static Student GetStudentById(string studentId)
         {
             Student student = new Student();
             var s = Proxy.GetStudentById(studentId);

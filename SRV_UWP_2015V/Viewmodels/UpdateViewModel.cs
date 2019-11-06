@@ -69,7 +69,7 @@ namespace SRV_UWP_2015V.Viewmodels
         public UpdateViewModel(Competency sComp)
         {
 
-            this.Student = student.GetStudentById(studentID);
+            this.Student = User.GetStudentById(studentID);
             this.Qualification = sQual;
             this.Qualifications = new ObservableCollection<Qualification>(Qualification.GetQualificationList(Student.UserID).ToList().OrderBy(q => q.QualName));
             this.Competency = sComp;

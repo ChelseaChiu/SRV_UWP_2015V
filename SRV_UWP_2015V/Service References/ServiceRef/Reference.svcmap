@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="35d3c029-bedb-4f01-88f6-b7fe583adaba" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a8b258b7-94d2-4d9d-a68c-0f12819dcf73" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -24,10 +24,10 @@
     <MetadataSource Address="https://srvwcfservice.azurewebsites.net/services/StudentService.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="StudentService.xsd" MetadataType="Schema" ID="ed4eb770-b640-4095-81ec-3bcf435e29ff" SourceId="1" SourceUrl="https://srvwcfservice.azurewebsites.net/services/StudentService.svc?xsd=xsd1" />
-    <MetadataFile FileName="StudentService1.xsd" MetadataType="Schema" ID="7cf49c78-043b-459e-978e-031702eb43a4" SourceId="1" SourceUrl="https://srvwcfservice.azurewebsites.net/services/StudentService.svc?xsd=xsd0" />
-    <MetadataFile FileName="StudentService.wsdl" MetadataType="Wsdl" ID="1308b1f5-037b-4fc8-b015-59c4204f88a2" SourceId="1" SourceUrl="https://srvwcfservice.azurewebsites.net/services/StudentService.svc?wsdl" />
-    <MetadataFile FileName="StudentService2.xsd" MetadataType="Schema" ID="dedf9ee6-71af-439a-adc1-b6f8b7941236" SourceId="1" SourceUrl="https://srvwcfservice.azurewebsites.net/services/StudentService.svc?xsd=xsd2" />
+    <MetadataFile FileName="StudentService.xsd" MetadataType="Schema" ID="2fd8836d-249a-4aa7-843b-beb9fcd78683" SourceId="1" SourceUrl="https://srvwcfservice.azurewebsites.net/services/StudentService.svc?xsd=xsd1" />
+    <MetadataFile FileName="StudentService1.xsd" MetadataType="Schema" ID="a83aa669-34f1-4f76-9db8-ef99729d6e95" SourceId="1" SourceUrl="https://srvwcfservice.azurewebsites.net/services/StudentService.svc?xsd=xsd0" />
+    <MetadataFile FileName="StudentService.wsdl" MetadataType="Wsdl" ID="a1915a99-2d19-432c-8251-90908b5bee50" SourceId="1" SourceUrl="https://srvwcfservice.azurewebsites.net/services/StudentService.svc?wsdl" />
+    <MetadataFile FileName="StudentService2.xsd" MetadataType="Schema" ID="8e75c854-89da-4bf4-a24e-2f880aa0d9bf" SourceId="1" SourceUrl="https://srvwcfservice.azurewebsites.net/services/StudentService.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

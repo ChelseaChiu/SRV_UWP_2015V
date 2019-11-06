@@ -36,12 +36,22 @@ namespace SRV_UWP_2015V.WCFClient
             proxy = new StudentServiceClient(StudentServiceClient.EndpointConfiguration.BasicHttpsBinding_IStudentService);
             List<Qualification> qualList = await proxy.GetQualificationListAsync(studentId);
 
-            return qualList;
-                
-
-
+            return qualList;               
 
         }
 
+        public async static Task<List<Student>> GetStudentList()
+        {
+            proxy = new StudentServiceClient(StudentServiceClient.EndpointConfiguration.BasicHttpsBinding_IStudentService);
+            List<Student> students = await proxy.GetStudentsAsync();
+            return students;
+        }
+
+        public async static Task<List<Competency>> GetCompetencyList(string studentId, string qualId)
+        {
+            proxy = new StudentServiceClient(StudentServiceClient.EndpointConfiguration.BasicHttpsBinding_IStudentService);
+            List<Competency> cs = await proxy.GetCompetencyListAsync(studentId, qualId);
+            return cs;
+        }
     }
 }

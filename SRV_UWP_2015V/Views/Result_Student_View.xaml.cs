@@ -73,12 +73,9 @@ namespace SRV_UWP_2015V.Views
                 compList = Competency.GetCompetencyList(Student.UserID, sQual.QualCode).ToList();
                 listBoxCompetency.ItemsSource = compList;
 
-                // set progress bar need to further coding
-                sQual.DoneC = compList.Where(c => c.Results == "PA").Count(c => c.TrainingPakckageUsage == "C");
+                // set progress bar
                 progressC.Value = sQual.DoneC;
-                sQual.DoneE = compList.Where(c => c.Results == "PA").Count(c => c.TrainingPakckageUsage == "E");
                 progressE.Value = sQual.DoneE;
-                sQual.DoneLE = compList.Where(c => c.Results == "PA").Count(c => c.TrainingPakckageUsage == "LE") + compList.Where(c => c.Results == "PA").Count(c => c.TrainingPakckageUsage == "C_SUP");
                 progressLE.Value = sQual.DoneLE;
 
                 if (Qualification.IsCompleted(sQual))

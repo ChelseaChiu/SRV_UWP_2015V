@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SRV_UWP_2015V.WCFClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -142,6 +143,28 @@ namespace SRV_UWP_2015V.Models
         */
         public Qualification Qualification { get; set; }
 
+        public static List<Student> GetStudents()
+        {
+            var s = Proxy.GetStudentList();
+            if (s != null)
+            {
+                List<Student> students = new List<Student>();
+                for (int i = 0; i < s.Result.Count; i++)
+                {
+                    Student student = new Student();
+                    student.UserID = s.Result[i].StudentID;
+                    student.LastName = s.Result[i].LastName;
+                    student.FirstName = s.Result[i].GivenName;
+                    student.Email = s.Result[i].EmailAddress;
+                    students.Add(student);
+                }
+                return students;
+            }
+            else
+            {
+                return null;
+            }
 
+        }
     }
 }

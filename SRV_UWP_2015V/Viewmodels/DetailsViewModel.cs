@@ -9,51 +9,17 @@ using System.Threading.Tasks;
 
 namespace SRV_UWP_2015V.Viewmodels
 {
-    public class DetailsViewModel : INotifyPropertyChanged
+    public class DetailsViewModel 
     {
-        private Student student = new Student();
+        public Student Student = new Student();
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        void RaisePropertyChanged(string propname)
-        {
-            var eh = PropertyChanged;
-            if (eh != null)
-                eh(this, new PropertyChangedEventArgs(propname));
-        }
-        public Student Student
-        {
-            get { return student; }
+        public List<Qualification> Qualifications;
 
-            set
-            {
-                if (student != value)
-                {
-                    student = value;
-                    RaisePropertyChanged("Student");
-
-                }
-            }
-        }
-
-        private ObservableCollection<Qualification> qualifications;
-        public ObservableCollection<Qualification> Qualifications
-        {
-
-            get { return qualifications; }
-            set
-            {
-                if (qualifications != value)
-                {
-                    qualifications = value;
-                    RaisePropertyChanged("Qualifications");
-                }
-            }
-        }
         public DetailsViewModel(string studentId)
         {
             // parameter studentId passed from prevoius page
-            this.Student = student.GetStudentById(studentId);
-            this.Qualifications = new ObservableCollection<Qualification>(Qualification.GetQualificationList(Student.UserID).ToList().OrderBy(q => q.QualName));
+            this.Student = User.GetStudentById(studentId);
+            this.Qualifications = new List<Qualification>(Qualification.GetQualificationList(Student.UserID).ToList().OrderBy(q => q.QualName));
         }
     }
 }

@@ -119,6 +119,9 @@
     <Compile Include="Views\Result_Student_View.xaml.cs">
       <DependentUpon>Result_Student_View.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SelectStudentPage.xaml.cs">
+      <DependentUpon>SelectStudentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WCFClient\Proxy.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +151,7 @@
     <None Include="SRV_UWP_2015V_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\logo_TAFESA.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -177,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Result_Student_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SelectStudentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

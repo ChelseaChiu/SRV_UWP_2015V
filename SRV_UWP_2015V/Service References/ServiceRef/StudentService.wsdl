@@ -68,6 +68,18 @@
   <wsdl:message name="IStudentService_GetQualification_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetQualificationResponse" />
   </wsdl:message>
+  <wsdl:message name="IStudentService_GetStudents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudents" />
+  </wsdl:message>
+  <wsdl:message name="IStudentService_GetStudents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStudentService_GetNotPassedCompetencies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNotPassedCompetencies" />
+  </wsdl:message>
+  <wsdl:message name="IStudentService_GetNotPassedCompetencies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNotPassedCompetenciesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IStudentService">
     <wsdl:operation name="GetStudentById">
       <wsdl:input wsaw:Action="http://tempuri.org/IStudentService/GetStudentById" message="tns:IStudentService_GetStudentById_InputMessage" />
@@ -92,6 +104,14 @@
     <wsdl:operation name="GetQualification">
       <wsdl:input wsaw:Action="http://tempuri.org/IStudentService/GetQualification" message="tns:IStudentService_GetQualification_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IStudentService/GetQualificationResponse" message="tns:IStudentService_GetQualification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStudentService/GetStudents" message="tns:IStudentService_GetStudents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStudentService/GetStudentsResponse" message="tns:IStudentService_GetStudents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotPassedCompetencies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStudentService/GetNotPassedCompetencies" message="tns:IStudentService_GetNotPassedCompetencies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStudentService/GetNotPassedCompetenciesResponse" message="tns:IStudentService_GetNotPassedCompetencies_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IStudentService" type="tns:IStudentService">
@@ -150,6 +170,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetStudents">
+      <soap:operation soapAction="http://tempuri.org/IStudentService/GetStudents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotPassedCompetencies">
+      <soap:operation soapAction="http://tempuri.org/IStudentService/GetNotPassedCompetencies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="BasicHttpsBinding_IStudentService" type="tns:IStudentService">
     <wsp:PolicyReference URI="#BasicHttpsBinding_IStudentService_policy" />
@@ -201,6 +239,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetQualification">
       <soap:operation soapAction="http://tempuri.org/IStudentService/GetQualification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudents">
+      <soap:operation soapAction="http://tempuri.org/IStudentService/GetStudents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotPassedCompetencies">
+      <soap:operation soapAction="http://tempuri.org/IStudentService/GetNotPassedCompetencies" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

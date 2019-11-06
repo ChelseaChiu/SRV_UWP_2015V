@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SRV_UWP_2015V.WCFClient;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -8,36 +9,10 @@ using System.Threading.Tasks;
 
 namespace SRV_UWP_2015V.Models
 {
-    public class Competency : INotifyPropertyChanged
+    public class Competency 
     {
-        private string completionStatus;
-        public string CompletionStatus
-        {
-            get { return completionStatus; }
-
-            set
-            {
-                if (completionStatus != value)
-                {
-                    completionStatus = value;
-                    RaisePropertyChanged("CompletionStatus");
-
-                }
-            }
-        }
-        private string additionalComments;
-        public string AdditionalComments
-        {
-            get { return additionalComments; }
-            set
-            {
-                if (additionalComments != value)
-                {
-                    additionalComments = value;
-                    RaisePropertyChanged("AdditionalComments");
-                }
-            }
-        }
+      //  public string completionStatus;
+       
         public string SubjectCode { get; set; }
         public string TafeCode { get; set; }
         public string NationalCode { get; set; }
@@ -47,77 +22,39 @@ namespace SRV_UWP_2015V.Models
 
         public string StudyPlan { get; set; }
         public string CompetencyName { get; set; }
-        private ObservableCollection<Competency> competencies;
-        public ObservableCollection<Competency> Competencies
-        {
 
-            get { return competencies; }
-            set
-            {
-                if (competencies != value)
-                {
-                    competencies = value;
-                    RaisePropertyChanged("Competencies");
-                }
-            }
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-        void RaisePropertyChanged(string propname)
+        public static List<Competency> GetCompetencyList(string studentID, string qualificationID)
         {
-            var eh = PropertyChanged;
-            if (eh != null)
-                eh(this, new PropertyChangedEventArgs(propname));
-        }
-        public static ObservableCollection<Competency> GetCompetencyList(string studentID, string qualificationID)
-        {
-            DBConnection dbCon = new DBConnection();
-            if (dbCon.IsConnect())
-            {
-                ObservableCollection<Competency> competencyList = new ObservableCollection<Competency>();
-
-                //for provided DB 19/10/2019 yuchun
-                //below are queries for customise db
-                string query = String.Format("select SG.TermCode, SG.TermYear, SG.Grade,CD.SubjectCode, CD.TafeCompCode, C.NationalCompCode, C.CompetencyName, CQ.CompTypeCode " +
-                    "from student_grade AS SG inner join crn_detail AS CD on SG.CRN = CD.CRN left join competency AS C ON CD.TafeCompCode = C.TafeCompCode " +
-                    "inner join competency_qualification AS CQ on CQ.NationalCompCode = C.NationalCompCode where SG.StudentID = '{0}' AND CQ.QualCode = '{1}' " +
-                    "order by TermYear, TermCode, CompTypeCode;", studentID, qualificationID);
-                var cmd = new MySqlCommand(query, dbCon.Connection);
-                var reader = cmd.ExecuteReader();
-                while (reader.Read())
+                List<Competency> compList = new List<Competency>();
+                var cl = Proxy.GetCompetencyList(studentID,qualificationID);
+                if (cl != null)
                 {
-                    //string status = reader.GetString(0);
-                    string result = reader.GetString(2);
-                    string semYear = string.Format("{0}S{1}", reader.GetString(1), reader.GetString(0));
-                    string subjectID = reader.GetString(3);
-                    string tafeCompID = reader.GetString(4);
-                    string trainingUsage = reader.GetString(7);
-                    string nationalCompID = reader.GetString(5);
-                    string compName = reader.GetString(6);
-                    //string comment = reader.GetString(8);
+                    for (int i = 0; i < cl.Result.Count; i++)
+                    {
                     Competency comp = new Competency();
-
-                    comp.Results = result;
-                    comp.StudyPlan = semYear;
-                    comp.SubjectCode = subjectID;
-                    comp.TrainingPakckageUsage = trainingUsage;
-                    comp.TafeCode = tafeCompID;
-                    comp.NationalCode = nationalCompID;
-                    comp.CompetencyName = compName;
-                    //comp.AdditionalComments = comment;
-                    if (result == "PA")
+                    comp.TafeCode = cl.Result[i].TafeCode;
+                    comp.NationalCode = cl.Result[i].NationalCode;
+                    comp.CompetencyName = cl.Result[i].CompetencyName;
+                    comp.SubjectCode = cl.Result[i].SubjectCode;
+                    comp.TrainingPakckageUsage = cl.Result[i].TrainingPakckageUsage;
+                    comp.StudyPlan = cl.Result[i].StudyPlan;
+                    comp.Results = cl.Result[i].Results;
+                    if (comp.Results == "PA")
                     {
                         comp.BackColor = "LightBlue";
                     }
                     else { comp.BackColor = "White"; }
-                    competencyList.Add(comp);
+
+                    compList.Add(comp);
+                    }
+                    return compList;
                 }
-                dbCon.Close();
-                return competencyList;
-            }
-            else { return null; }
+
+                else { return null; }
+                
         }
 
-        public bool UpdateToDB(string studentID, string qualificationID, string competencyID, string status, string comments)
+      /*  public bool UpdateToDB(string studentID, string qualificationID, string competencyID, string status, string comments)
         {
 
             DBConnection dbCon = new DBConnection();
@@ -146,6 +83,7 @@ namespace SRV_UWP_2015V.Models
                 return false;
             }
         }
+        */
         public string BackColor
         { get; set; }
     }

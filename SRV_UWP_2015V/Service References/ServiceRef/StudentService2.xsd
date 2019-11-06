@@ -55,4 +55,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfQualification" nillable="true" type="tns:ArrayOfQualification" />
+  <xs:complexType name="ArrayOfStudent">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Student" nillable="true" type="tns:Student" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStudent" nillable="true" type="tns:ArrayOfStudent" />
 </xs:schema>

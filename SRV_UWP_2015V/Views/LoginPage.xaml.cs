@@ -33,10 +33,10 @@ namespace SRV_UWP_2015V.Views
 
                 string userid = txtId.Text;
                 //string password = txtPassword.Password.ToString();
-                User user = new User();
-                if (user.Login(userid)) 
+                if (User.Login(userid)) 
                 {
-                    Frame.Navigate(typeof(Result_Student_View), userid);   
+                Frame.Navigate(typeof(SelectStudentPage));
+                    //Frame.Navigate(typeof(Result_Student_View), userid);   
                 }
                 else
                 {
