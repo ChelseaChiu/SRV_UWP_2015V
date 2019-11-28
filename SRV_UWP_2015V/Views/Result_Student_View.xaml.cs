@@ -1,5 +1,6 @@
 ﻿using SRV_UWP_2015V.Models;
 using SRV_UWP_2015V.Viewmodels;
+using SRV_UWP_2015V.WCFClient;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,8 +26,6 @@ namespace SRV_UWP_2015V.Views
     /// </summary>
     public sealed partial class Result_Student_View : Page
     {
-        DetailsViewModel viewModel;
-        Student Student;
 
         public Result_Student_View()
         {
@@ -35,67 +34,61 @@ namespace SRV_UWP_2015V.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-
+            Proxy proxy = new Proxy();
             string id = (string)e.Parameter;
+            var student = proxy.GetStudentById(id);
 
-            if (viewModel == null)
-            {
-                viewModel = new DetailsViewModel(id);
-                stackStudentDetail.DataContext = viewModel.Student;
-                Student = viewModel.Student;
-                comboQual.ItemsSource = viewModel.Qualifications;
-            }
-            else
-            {
-                //Frame.Navigate(typeof(views.MainPage));
-
-            }
+            stackStudentDetail.DataContext = student;
+            var qualifications = proxy.GetQualificationList(id);
+            comboQual.ItemsSource = qualifications;
+            //foreach (var q in qualifications)
+            //{
+            //    comboQual.Items.Add(q.QualCode+" "+q.QualName);
+            //} 
         }
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-
-            //need log out functionality here
-
-            Frame.Navigate(typeof(LoginPage)); //Log out and navigate to log in page
-
+            Frame.Navigate(typeof(LoginPage)); 
         }
 
         private void Select_Qualification(object sender, SelectionChangedEventArgs e)
         {
-            Qualification sQual = comboQual.SelectedItem as Qualification;
-            if (sQual != null)
-            {
-                stackComp.Visibility = Visibility.Visible;
-                stackReqUnits.DataContext = sQual;
-                stackStudentDetail.DataContext = Student;
-                List<Competency> compList = new List<Competency>();
-                compList = Competency.GetCompetencyList(Student.UserID, sQual.QualCode).ToList();
-                listBoxCompetency.ItemsSource = compList;
+            Proxy proxy = new Proxy();
+            var selectedQual = comboQual.SelectedItem as string;
+            //Qualification sQual = comboQual.SelectedItem as Qualification;
+            //if (sQual != null)
+            //{
+            //    stackComp.Visibility = Visibility.Visible;
+            //    stackReqUnits.DataContext = sQual;
+            //    stackStudentDetail.DataContext = Student;
+            //    List<Competency> compList = new List<Competency>();
+            //    compList = Competency.GetCompetencyList(Student.UserID, sQual.QualCode).ToList();
+            //    listBoxCompetency.ItemsSource = compList;
 
-                // set progress bar
-                progressC.Value = sQual.DoneC;
-                progressE.Value = sQual.DoneE;
-                progressLE.Value = sQual.DoneLE;
+            //    // set progress bar
+            //    progressC.Value = sQual.DoneC;
+            //    progressE.Value = sQual.DoneE;
+            //    progressLE.Value = sQual.DoneLE;
 
-                if (Qualification.IsCompleted(sQual))
-                {
-                    sQual.DoneTotal = sQual.TotalUnits;
-                    progressT.Value = sQual.DoneTotal;
-                    btnReqParche.IsEnabled = true;
-                }
-                else
-                {
-                    sQual.DoneTotal = sQual.DoneC + sQual.DoneE + sQual.DoneLE;
-                    progressT.Value = sQual.DoneTotal;
-                }
-                stackUnits.DataContext = sQual;
-                stackProg.DataContext = sQual;
-                btnReqParche.Visibility = Visibility.Visible;
-                Student.Qualification = sQual;
+            //    if (Qualification.IsCompleted(sQual))
+            //    {
+            //        sQual.DoneTotal = sQual.TotalUnits;
+            //        progressT.Value = sQual.DoneTotal;
+            //        btnReqParche.IsEnabled = true;
+            //    }
+            //    else
+            //    {
+            //        sQual.DoneTotal = sQual.DoneC + sQual.DoneE + sQual.DoneLE;
+            //        progressT.Value = sQual.DoneTotal;
+            //    }
+            //    stackUnits.DataContext = sQual;
+            //    stackProg.DataContext = sQual;
+            //    btnReqParche.Visibility = Visibility.Visible;
+            //    Student.Qualification = sQual;
 
 
-            }
+            //}
         }
 
         private async void Req_Parchment_Click(object sender, RoutedEventArgs e)

@@ -37,7 +37,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock HorizontalAlignment="left" Text="Student ID: " VerticalAlignment="Center" Foreground="Black" FontSize="12" Margin="2"/>
-                                <TextBlock x:Name="txbStuID" HorizontalAlignment="left" Text="{Binding UserID}" VerticalAlignment="Center" Foreground="Black" FontSize="12" Margin="2"/>
+                                <TextBlock x:Name="txbStuID" HorizontalAlignment="left" Text="{Binding StudentID}" VerticalAlignment="Center" Foreground="Black" FontSize="12" Margin="2"/>
                             </StackPanel>
                         </StackPanel>
                         <ComboBox x:Name="comboQual" Foreground="Black" BorderBrush="Black" FontSize="10" PlaceholderText="Select Qualification" SelectionChanged="Select_Qualification" DisplayMemberPath="QualName" />

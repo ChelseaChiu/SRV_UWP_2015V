@@ -18,8 +18,8 @@ namespace SRV_UWP_2015V.Viewmodels
         public DetailsViewModel(string studentId)
         {
             // parameter studentId passed from prevoius page
-            this.Student = User.GetStudentById(studentId);
-            this.Qualifications = new List<Qualification>(Qualification.GetQualificationList(Student.UserID).ToList().OrderBy(q => q.QualName));
+            //this.Student = User.GetStudentById(studentId);
+            //this.Qualifications = new List<Qualification>(Qualification.GetQualificationList(Student.UserID).ToList().OrderBy(q => q.QualName));
         }
     }
 }

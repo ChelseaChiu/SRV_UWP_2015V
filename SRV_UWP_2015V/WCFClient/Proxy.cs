@@ -10,48 +10,67 @@ namespace SRV_UWP_2015V.WCFClient
     public class Proxy
     {
         private static StudentServiceClient proxy = null;
-        public async static Task<bool> Login(string id)
+        public bool Login(string id)
         {
             proxy = new StudentServiceClient(StudentServiceClient.EndpointConfiguration.BasicHttpsBinding_IStudentService);
-            bool success = await proxy.LoginAsync(id);
-
-                if (success)
-                {
-                    return success;
-                }
-                else return false;
+            return proxy.LoginAsync(id).Result;
+           
         }
 
-        public async static Task<Student> GetStudentById(string id)
+        public Student GetStudentById(string id)
         {
             proxy = new StudentServiceClient(StudentServiceClient.EndpointConfiguration.BasicHttpsBinding_IStudentService);
-            Student s = await proxy.GetStudentByIdAsync(id);
-            return s;
+            return proxy.GetStudentByIdAsync(id).Result;
 
         }
 
 
-        public async static Task<List<Qualification>> GetQualificationList(string studentId)
+        public List<Qualification> GetQualificationList(string studentId)
         {
             proxy = new StudentServiceClient(StudentServiceClient.EndpointConfiguration.BasicHttpsBinding_IStudentService);
-            List<Qualification> qualList = await proxy.GetQualificationListAsync(studentId);
-
-            return qualList;               
-
+            var qs = proxy.GetQualificationListAsync(studentId).Result;
+            List<Qualification> qualifications = new List<Qualification>();
+            foreach (var q in qs)
+            {
+                qualifications.Add(q);
+            }
+            return qualifications;
         }
 
-        public async static Task<List<Student>> GetStudentList()
+        public List<Student> GetStudentList()
         {
             proxy = new StudentServiceClient(StudentServiceClient.EndpointConfiguration.BasicHttpsBinding_IStudentService);
-            List<Student> students = await proxy.GetStudentsAsync();
+            var ss = proxy.GetStudentsAsync().Result;
+            List<Student> students = new List<Student>();
+            foreach (var s in ss)
+            {
+                students.Add(s);
+            }
             return students;
         }
 
-        public async static Task<List<Competency>> GetCompetencyList(string studentId, string qualId)
+        public List<Competency> GetCompetencyList(string studentId, string qualId)
         {
             proxy = new StudentServiceClient(StudentServiceClient.EndpointConfiguration.BasicHttpsBinding_IStudentService);
-            List<Competency> cs = await proxy.GetCompetencyListAsync(studentId, qualId);
-            return cs;
+            var cs = proxy.GetCompetencyListAsync(studentId, qualId).Result;
+            List<Competency> competencies = new List<Competency>();
+            foreach (var c in cs)
+            {
+                competencies.Add(c);
+            }
+            return competencies;
         }
+        public List<Competency> GetNotPassedCompetencyList(string studentId, string qualId)
+        {
+            proxy = new StudentServiceClient(StudentServiceClient.EndpointConfiguration.BasicHttpsBinding_IStudentService);
+            var cs = proxy.GetNotPassedCompetenciesAsync(studentId, qualId).Result;
+            List<Competency> competencies = new List<Competency>();
+            foreach (var c in cs)
+            {
+                competencies.Add(c);
+            }
+            return competencies;
+        }
+
     }
 }

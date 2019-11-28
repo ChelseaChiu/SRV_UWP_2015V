@@ -1,4 +1,5 @@
 ﻿using SRV_UWP_2015V.Models;
+using SRV_UWP_2015V.WCFClient;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,22 +25,31 @@ namespace SRV_UWP_2015V.Views
     /// </summary>
     public sealed partial class SelectStudentPage : Page
     {
-
-        List<Student> Students;
         public SelectStudentPage()
         {
             this.InitializeComponent();
-            Students = Student.GetStudents();
-            comboStudents.DataContext = Students;
+            this.Loaded += new RoutedEventHandler(Page_Load);
+        }
+        private void Page_Load(object sender, RoutedEventArgs e)
+        {
+            Proxy proxy = new Proxy();
+            var students = proxy.GetStudentList();
+            comboStudents.ItemsSource = students;
+            foreach (var s in students)
+            {
+                s.
+            }
         }
 
         private async void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            Student student = comboStudents.SelectedItem as Student;
+            Proxy proxy = new Proxy();
+            string id = comboStudents.SelectedItem.ToString();
+            var student = proxy.GetStudentById(id);
+
             if (student!=null)
             {                
-                    Frame.Navigate(typeof(Result_Student_View), student.UserID);
-                
+                    Frame.Navigate(typeof(Result_Student_View), id);
             }
             else
             {
@@ -52,9 +62,7 @@ namespace SRV_UWP_2015V.Views
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
 
-            //need log out functionality here
-
-            Frame.Navigate(typeof(LoginPage)); //Log out and navigate to log in page
+            Frame.Navigate(typeof(LoginPage)); 
 
         }
     }

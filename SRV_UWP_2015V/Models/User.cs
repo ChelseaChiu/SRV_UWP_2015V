@@ -18,38 +18,38 @@ namespace SRV_UWP_2015V.Models
         public string UserID { get; set; }
         public string Password { get; set; }
 
-        public static bool Login(string inUserId)
-        {
-            var success = Proxy.Login(inUserId);
+        //public static bool Login(string inUserId)
+        //{
+        //    var success = Proxy.Login(inUserId);
             
-            if (success.Result == true)
-            {
-                return success.Result;
-            }
-            else return false;
-        }
-        public Qualification SelectQualification(Qualification selectedItem)
-        {
-            Qualification mySelectedItem = selectedItem;
-            //TODO
-            return mySelectedItem;
-        }
+        //    if (success.Result == true)
+        //    {
+        //        return success.Result;
+        //    }
+        //    else return false;
+        //}
+        //public Qualification SelectQualification(Qualification selectedItem)
+        //{
+        //    Qualification mySelectedItem = selectedItem;
+        //    //TODO
+        //    return mySelectedItem;
+        //}
 
-        public static Student GetStudentById(string studentId)
-        {
-            Student student = new Student();
-            var s = Proxy.GetStudentById(studentId);
-            if (s != null)
-            {
-                student.UserID = s.Result.StudentID;
-                student.FirstName = s.Result.GivenName;
-                student.LastName = s.Result.LastName;
-                return student;
-            }
+        //public static Student GetStudentById(string studentId)
+        //{
+        //    Student student = new Student();
+        //    var s = Proxy.GetStudentById(studentId);
+        //    if (s != null)
+        //    {
+        //        student.UserID = s.Result.StudentID;
+        //        student.FirstName = s.Result.GivenName;
+        //        student.LastName = s.Result.LastName;
+        //        return student;
+        //    }
 
-            else return null;
+        //    else return null;
 
 
-        }
+        //}
     }
 }

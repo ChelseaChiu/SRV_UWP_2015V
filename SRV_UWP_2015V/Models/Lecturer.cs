@@ -14,15 +14,15 @@ namespace SRV_UWP_2015V.Models
                   Competency.CompletionStatus = newCompletionStatus;
               }
           */
-        private Student SearchStudentById(string studentId)
-        {
-            Student student = new Student();
-            if (student.UserID == studentId)  //TODO
-            {
-                return student;
-            }
-            else { return null; }
-        }
+        //private Student SearchStudentById(string studentId)
+        //{
+        //    Student student = new Student();
+        //    if (student.UserID == studentId)  //TODO
+        //    {
+        //        return student;
+        //    }
+        //    else { return null; }
+        //}
 
 /*        public bool IsLecturerLogIn(string inUserId)
         {

@@ -112,7 +112,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Viewmodels\DetailsViewModel.cs" />
-    <Compile Include="Viewmodels\UpdateViewModel.cs" />
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
